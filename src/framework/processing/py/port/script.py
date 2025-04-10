@@ -304,18 +304,19 @@ def check_if_valid_linkedin_ddp(filename):
 def check_if_valid_youtube_ddp(filename):
     """Check if the uploaded file is a valid YouTube data download package"""
     folder_name_check_ddp = [
-        "YouTube und YouTube Music",
-        "YouTube and YouTube Music",
+        # "YouTube und YouTube Music",
+        # "YouTube and YouTube Music",
+        "Takeout"
     ]  # language sensitive
-    file_name_check_html = [
-        "Wiedergabeverlauf.html",
-        "watch-history.html",
-    ]  # language sensitive
+    # file_name_check_html = [
+    #     "Wiedergabeverlauf.html",
+    #     "watch-history.html",
+    # ]  # language sensitive
 
     try:
         with zipfile.ZipFile(filename, "r") as zip_ref:
             found_folder_name_check_ddp = False
-            found_file_name_check_html = False
+            # found_file_name_check_html = False
 
             for file_info in zip_ref.infolist():
                 if any(
@@ -324,24 +325,25 @@ def check_if_valid_youtube_ddp(filename):
                 ):
                     found_folder_name_check_ddp = True
 
-                if any(
-                    file_name in file_info.filename
-                    for file_name in file_name_check_html
-                ):
-                    found_file_name_check_html = True
+                # if any(
+                #     file_name in file_info.filename
+                #     for file_name in file_name_check_html
+                # ):
+                #     found_file_name_check_html = True
 
             if found_folder_name_check_ddp:
-                if found_file_name_check_html:
-                    print(
-                        f"Folder '{folder_name_check_ddp}' found and file '{file_name_check_html}' found in the ZIP file. Seems like a YouTube HTML DDP."
-                    )
-                    return "invalid_no_json"
-
-                else:
-                    print(
-                        f"Folder '{folder_name_check_ddp}' found and file '{file_name_check_html}' not found in the ZIP file. Seems like a real YouTube JSON DDP."
-                    )
-                    return "valid"
+                # if found_file_name_check_html:
+                #     print(
+                #         f"Folder '{folder_name_check_ddp}' found and file '{file_name_check_html}' found in the ZIP file. Seems like a YouTube HTML DDP."
+                #     )
+                #     return "invalid_no_json"
+                #
+                # else:
+                print(
+                    # f"Folder '{folder_name_check_ddp}' found and file '{file_name_check_html}' not found in the ZIP file. Seems like a real YouTube JSON DDP."
+                    f"Folder '{folder_name_check_ddp}' found in the ZIP file. Seems like a real YouTube JSON DDP."
+                )
+                return "valid"
 
             else:
                 print(

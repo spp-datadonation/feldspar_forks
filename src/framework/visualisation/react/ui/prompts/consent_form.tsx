@@ -86,7 +86,7 @@ export const ConsentForm = (props: Props): JSX.Element => {
     return (
       <div key={table.id} className='flex flex-col gap-4 mb-4'>
         <div className='flex flex-row gap-4 items-center'>
-          <NumberIcon number={table.number} />
+          <NumberIcon number={0} />
           <div className='pt-2px'>
             <Title4 text={table.title} margin='' />
           </div>
