@@ -857,7 +857,7 @@ def retry_confirmation_no_json(platform):
         text = props.Translatable(
             {
                 "en": "It seems that you have uploaded the incomplete data package that you received from LinkedIn after just 10 minutes. For this data donation, we kindly ask you to provide us with the data package that you normally receive after 24 hours. Please upload this complete data package.",
-                "de": "Es scheint als haben Sie das unvollständige Datenpaket hochgeladen, dass Sie von LinkedIn bereits nach 10 Minuten bekommen haben. Für diese Datenspende bitten Sie wir uns das Datenpaket zu spenden, dass Sie normalerweise nach 24 Stunden erhalten.\nBitte laden Sie dieses vollständige Datenpaket noch.",
+                "de": "Sie haben das unvollständige Datenpaket hochgeladen, welches LinkedIn bereits nach wenigen Minuten gesendet hat. Für unsere Studie bitten wir Sie, uns das Datenpaket zu spenden, dass Sie normalerweise nach circa 24 Stunden erhalten.\nBitte laden Sie dieses vollständige Datenpaket noch.",
                 "nl": "Het lijkt erop dat u het onvolledige datapakket heeft geüpload dat u van LinkedIn al na 10 minuten heeft ontvangen. Voor deze datadonatie vragen wij u vriendelijk om ons het datapakket te doneren dat u normaal gesproken na 24 uur ontvangt. Gelieve dit volledige datapakket te uploaden.",
             }
         )

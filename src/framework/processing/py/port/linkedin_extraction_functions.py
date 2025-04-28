@@ -65,7 +65,7 @@ def extract_connections(connections_csv, locale):
     tl_count = translate(
         {
             "en": "Number of connections",
-            "de": "Anzahl der Verbindungen",
+            "de": "Anzahl der Kontakte",
             "nl": "Aantal connecties",
         },
         locale,
@@ -159,7 +159,7 @@ def extract_connections(connections_csv, locale):
             }
         )
 
-    return pd.DataFrame(results)
+    return pd.DataFrame(results).sort_values(by=tl_date)
 
 
 def extract_comments(comments_csv, locale):
@@ -337,7 +337,7 @@ def extract_messages(messages_csv, locale):
     tl_members = translate(
         {
             "en": "Number of unique contacts",
-            "de": "Anzahl einzigartiger Kontakte",
+            "de": "Anzahl der Kontakte",
             "nl": "Aantal unieke contacten",
         },
         locale,
@@ -596,7 +596,7 @@ def extract_profile(profile_csv, locale):
     tl_has_value = translate(
         {
             "en": "Has Value",
-            "de": "Hat Wert",
+            "de": "Information vorhanden",
             "nl": "Heeft waarde",
         },
         locale,
@@ -768,8 +768,8 @@ def extract_device_usage(device_csv, locale):
     tl_date = translate("date", locale)
     tl_user_agent = translate(
         {
-            "en": "User Agent",
-            "de": "User Agent",
+            "en": "Browser/Device",
+            "de": "Browser/Gerät",
             "nl": "User Agent",
         },
         locale,

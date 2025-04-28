@@ -9,7 +9,7 @@ extraction_dict = {
         "patterns": ["Connections.csv"],
         "title": {
             "en": "How many connections have you made per day and what information do they have?",
-            "de": "Wie viele Verbindungen haben Sie pro Tag hergestellt und welche Informationen haben diese?",
+            "de": "Mit wie vielen Personen haben Sie sich vernetzt? [pro Tag]",
             "nl": "Hoeveel connecties heb je per dag gemaakt en welke informatie hebben ze?",
         },
     },
@@ -18,7 +18,7 @@ extraction_dict = {
         "patterns": ["Comments.csv"],
         "title": {
             "en": "How many comments have you made per day?",
-            "de": "Wie viele Kommentare haben Sie pro Tag geschrieben?",
+            "de": "Wie viele Kommentare haben Sie geschrieben? [pro Tag]",
             "nl": "Hoeveel reacties heeft u per dag geplaatst?",
         },
     },
@@ -27,7 +27,7 @@ extraction_dict = {
         "patterns": ["Reactions.csv"],
         "title": {
             "en": "What types of reactions have you given and how often per day?",
-            "de": "Welche Arten von Reaktionen haben Sie gegeben und wie oft pro Tag?",
+            "de": "Welche Arten von Reaktionen haben Sie gegeben und wie oft? [pro Tag]",
             "nl": "Welke soorten reacties heb je gegeven en hoe vaak per dag?",
         },
     },
@@ -36,7 +36,7 @@ extraction_dict = {
         "patterns": ["Shares.csv"],
         "title": {
             "en": "How many posts have you shared per day?",
-            "de": "Wie viele Beiträge haben Sie pro Tag geteilt?",
+            "de": "Wie viele Beiträge haben Sie geteilt? [pro Tag]",
             "nl": "Hoeveel berichten heeft u per dag gedeeld?",
         },
     },
@@ -45,7 +45,7 @@ extraction_dict = {
         "patterns": ["messages.csv"],
         "title": {
             "en": "How many messages have you exchanged per day and with how many people?",
-            "de": "Wie viele Nachrichten haben Sie pro Tag ausgetauscht und mit wie vielen Personen?",
+            "de": "Wie viele Nachrichten haben Sie ausgetauscht? [pro Tag]",
             "nl": "Hoeveel berichten heb je per dag uitgewisseld en met hoeveel mensen?",
         },
     },
@@ -54,7 +54,7 @@ extraction_dict = {
         "patterns": ["SearchQueries.csv"],
         "title": {
             "en": "How many searches have you performed per day?",
-            "de": "Wie viele Suchanfragen haben Sie pro Tag durchgeführt?",
+            "de": "Wie viele Suchanfragen haben Sie durchgeführt? [pro Tag]",
             "nl": "Hoeveel zoekopdrachten heb je per dag uitgevoerd?",
         },
     },
@@ -72,7 +72,7 @@ extraction_dict = {
         "patterns": ["Member_Follows.csv"],
         "title": {
             "en": "How many LinkedIn members have you followed/unfollowed per day?",
-            "de": "Wie vielen LinkedIn-Mitgliedern sind Sie pro Tag gefolgt bzw. nicht mehr gefolgt?",
+            "de": "Wie vielen LinkedIn-Mitgliedern sind Sie gefolgt bzw. nicht mehr gefolgt? [pro Tag]",
             "nl": "Hoeveel LinkedIn-leden bent u per dag gaan volgen/ontvolgen?",
         },
     },
@@ -99,7 +99,7 @@ extraction_dict = {
         "patterns": ["Logins.csv"],
         "title": {
             "en": "What user agents have you used to access LinkedIn?",
-            "de": "Mit welchen User Agents haben Sie auf LinkedIn zugegriffen?",
+            "de": "Mit welchen Brower/Geräte haben Sie auf LinkedIn zugegriffen?",
             "nl": "Welke user agents heb je gebruikt om toegang te krijgen tot LinkedIn?",
         },
     },
@@ -108,7 +108,7 @@ extraction_dict = {
         "patterns": ["Saved Jobs.csv"],
         "title": {
             "en": "How many jobs have you saved per day?",
-            "de": "Wie viele Jobs haben Sie pro Tag gespeichert?",
+            "de": "Wie viele Jobs haben Sie gespeichert? [pro Tag]",
             "nl": "Hoeveel vacatures heb je per dag opgeslagen?",
         },
     },

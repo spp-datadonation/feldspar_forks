@@ -9,7 +9,7 @@ extraction_dict = {
         "patterns": ["Wiedergabeverlauf.json", "watch-history.json"],
         "title": {
             "en": "How many videos have you watched per day?",
-            "de": "Wie viele Videos haben Sie pro Tag angesehen?",
+            "de": "Wie viele Videos haben Sie angesehen? [pro Tag]",
             "nl": "Hoeveel video's heb je per dag bekeken?",
         },
     },
@@ -18,7 +18,7 @@ extraction_dict = {
         "patterns": ["Kommentare.csv", "comments.csv"],
         "title": {
             "en": "How many comments have you made per day?",
-            "de": "Wie viele Kommentare haben Sie pro Tag geschrieben?",
+            "de": "Wie viele Kommentare haben Sie geschrieben? [pro Tag]",
             "nl": "Hoeveel reacties heb je per dag geplaatst?",
         },
     },
@@ -36,7 +36,7 @@ extraction_dict = {
         "patterns": ["Suchverlauf.json", "search-history.json"],
         "title": {
             "en": "How many searches have you performed per day?",
-            "de": "Wie viele Suchen haben Sie pro Tag durchgeführt?",
+            "de": "Wie viele Suchen haben Sie durchgeführt? [pro Tag]",
             "nl": "Hoeveel zoekopdrachten heb je per dag uitgevoerd?",
         },
     },

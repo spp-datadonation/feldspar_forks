@@ -102,7 +102,7 @@ def extract_time_spent(combined_data, locale):
     )
 
     # Constants
-    SESSION_BREAK_THRESHOLD = 60  # seconds
+    SESSION_BREAK_THRESHOLD = 180  # seconds
     DEFAULT_ACTIVITY_TIME = 30  # seconds for the last activity in a session
 
     # Extract data from the combined format
@@ -221,7 +221,7 @@ def extract_session_frequency(combined_data, locale):
     )
 
     # Constants
-    SESSION_BREAK_THRESHOLD = 60  # seconds
+    SESSION_BREAK_THRESHOLD = 180  # seconds
 
     # Extract data from the combined format
     posts_viewed_json = combined_data.get("posts_viewed", {})
@@ -782,7 +782,7 @@ def extract_posts_created(posts_created_json, locale):
     tl_value = translate(
         {
             "en": ["Date", "Linked location"],
-            "de": ["Datum", "Verlikter Standort"],
+            "de": ["Datum", "Standortinformationen geteilt"],
             "nl": ["Datum", "Locatie leuk gevonden"],
         },
         locale,
