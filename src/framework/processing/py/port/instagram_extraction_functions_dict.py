@@ -16,18 +16,6 @@ extraction_dict = {
             "nl": "Hoeveel tijd heb je op Instagram doorgebracht? [seconden per dag]",
         },
     },
-    "session_frequency": {
-        "extraction_function": ef.extract_session_frequency,
-        "patterns": [
-            "posts_viewed",
-            "videos_watched",
-        ],  # This function requires both files
-        "title": {
-            "en": "How many times did you open Instagram? [sessions per day]",
-            "de": "Wie oft haben Sie Instagram geöffnet? [Sitzungen pro Tag]",
-            "nl": "Hoe vaak heb je Instagram geopend? [sessies per dag]",
-        },
-    },
     "ads_seen": {
         "extraction_function": ef.extract_ads_seen,
         "patterns": ["ads_viewed"],
@@ -55,139 +43,49 @@ extraction_dict = {
             "nl": "Welke winkelartikelen heb je onlangs bekeken?",
         },
     },
-    "posts_seen": {
-        "extraction_function": ef.extract_posts_seen,
-        "patterns": ["posts_viewed"],
+    "combined_views": {
+        "extraction_function": ef.extract_combined_views,
+        "patterns": ["posts_viewed", "videos_watched"],
         "title": {
-            "en": "How often did you view posts? [per day]",
-            "de": "Wie oft haben Sie Posts angesehen? [pro Tag]",
-            "nl": "Hoe vaak heb je berichten bekeken? [per dag]",
+            "en": "How often did you view Instagram content? [per day]",
+            "de": "Wie oft haben Sie Posts und Videos angesehen? [pro Tag]",
+            "nl": "Hoe vaak heb je Instagram-inhoud bekeken? [per dag]",
         },
     },
-    "videos_seen": {
-        "extraction_function": ef.extract_videos_seen,
-        "patterns": ["videos_watched"],
+    "combined_blocks": {
+        "extraction_function": ef.extract_combined_blocks,
+        "patterns": ["blocked_accounts", "restricted_accounts"],
         "title": {
-            "en": "How often did you watch Reels and Story videos? [per day]",
-            "de": "Wie oft haben Sie Reels und Story-Videos gesehen? [pro Tag]",
-            "nl": "Hoe vaak heb je Reels en Story-video's bekeken? [per dag]",
+            "en": "How often did you block or restrict other profiles? [per day]",
+            "de": "Wie oft haben Sie andere Profile blockiert und eingeschränkt? [pro Tag]",
+            "nl": "Hoe vaak heb je andere profielen geblokkeerd of beperkt? [per dag]",
         },
     },
-    "paid_subscription": {
-        "extraction_function": ef.extract_paid_subscription,
-        "patterns": ["subscription_for_no_ads"],
+    "combined_comments": {
+        "extraction_function": ef.extract_combined_comments,
+        "patterns": ["post_comments_1", "reels_comments"],
         "title": {
-            "en": "Do you use Instagram's paid subscription option that doesn't show you ads?",
-            "de": "Nutzen Sie Instagrams kostenpflichtige Abo-Option, mit der Ihnen keine Werbeinhalte angezeigt werden?",
-            "nl": "Gebruik je Instagram's betaalde abonnementsoptie die geen advertenties weergeeft?",
+            "en": "How often did you comment on Instagram content? [per day]",
+            "de": "Wie oft haben Sie Posts und Reels kommentiert? [pro Tag]",
+            "nl": "Hoe vaak heb je gereageerd op Instagram-inhoud? [per dag]",
         },
     },
-    "blocked_profiles": {
-        "extraction_function": ef.extract_blocked_profiles,
-        "patterns": ["blocked_profiles"],
+    "combined_likes": {
+        "extraction_function": ef.extract_combined_likes,
+        "patterns": ["liked_posts", "story_likes", "liked_comments"],
         "title": {
-            "en": "How often did you block or restrict other Instagram profiles? [per day]",
-            "de": "Wie oft haben Sie andere Instagramkonten blockiert oder eingeschränkt? [pro Tag]",
-            "nl": "Hoe vaak heb je andere Instagram-accounts geblokkeerd of beperkt? [per dag]",
+            "en": "How often did you like Instagram content? [per day]",
+            "de": "Wie oft haben Sie Posts, Stories oder Kommentare geliked? [pro Tag]",
+            "nl": "Hoe vaak heb je Instagram-inhoud geliked? [per dag]",
         },
     },
-    "restricted_profiles": {
-        "extraction_function": ef.extract_restricted_profiles,
-        "patterns": ["restricted_profiles"],
+    "combined_story_interactions": {
+        "extraction_function": ef.extract_combined_story_interactions,
+        "patterns": ["countdowns", "emoji_sliders", "polls", "questions", "quizzes"],
         "title": {
-            "en": "How often did you restrict profiles? [per day]",
-            "de": "Wie oft haben Sie Konten eingeschränkt? [pro Tag]",
-            "nl": "Hoe vaak heb je accounts beperkt? [per dag]",
-        },
-    },
-    "post_comments": {
-        "extraction_function": ef.extract_post_comments,
-        "patterns": ["post_comments_1"],
-        "title": {
-            "en": "How often did you comment on posts? [per day]",
-            "de": "Wie oft haben Sie Beiträge kommentiert? [pro Tag]",
-            "nl": "Hoe vaak heb je op berichten gereageerd? [per dag]",
-        },
-    },
-    "reel_comments": {
-        "extraction_function": ef.extract_reel_comments,
-        "patterns": ["reels_comments"],
-        "title": {
-            "en": "How often did you comment on reels? [per day]",
-            "de": "Wie oft haben Sie Reels kommentiert? [pro Tag]",
-            "nl": "Hoe vaak heb je op reels gereageerd? [per dag]",
-        },
-    },
-    "posts_liked": {
-        "extraction_function": ef.extract_posts_liked,
-        "patterns": ["liked_posts"],
-        "title": {
-            "en": "How often did you like posts? [per day]",
-            "de": 'Wie oft haben Sie Beiträge "geliked"? [pro Tag]',
-            "nl": "Hoe vaak heb je op berichten geliked? [per dag]",
-        },
-    },
-    "stories_liked": {
-        "extraction_function": ef.extract_stories_liked,
-        "patterns": ["story_likes"],
-        "title": {
-            "en": "How often did you like a story? [per day]",
-            "de": 'Wie oft haben Sie eine Story "geliked"? [pro Tag]',
-            "nl": "Hoe vaak heb je een story geliked? [per dag]",
-        },
-    },
-    "comments_liked": {
-        "extraction_function": ef.extract_comments_liked,
-        "patterns": ["liked_comments"],
-        "title": {
-            "en": "How often did you like comments? [per day]",
-            "de": 'Wie oft haben Sie Kommentare "geliked"? [pro Tag]',
-            "nl": "Hoe vaak heb je op reacties geliked? [per dag]",
-        },
-    },
-    "story_interaction_countdowns": {
-        "extraction_function": ef.extract_story_interaction_countdowns,
-        "patterns": ["countdowns"],
-        "title": {
-            "en": "How often did you react to a countdown in a story? [per day]",
-            "de": "Wie oft haben Sie auf einen Countdown in einer Story reagiert? [pro Tag]",
-            "nl": "Hoe vaak heb je gereageerd op een aftelklok in een story? [per dag]",
-        },
-    },
-    "story_interaction_emoji_sliders": {
-        "extraction_function": ef.extract_story_interaction_emoji_sliders,
-        "patterns": ["emoji_sliders"],
-        "title": {
-            "en": "How often did you react to an emoji slider in a story? [per day]",
-            "de": "Wie oft haben Sie auf einen Emoji-Slider in einer Story reagiert? [pro Tag]",
-            "nl": "Hoe vaak heb je gereageerd op een emoji-slider in een story? [per dag]",
-        },
-    },
-    "story_interaction_polls": {
-        "extraction_function": ef.extract_story_interaction_polls,
-        "patterns": ["polls"],
-        "title": {
-            "en": "How often did you react to a poll in a story? [per day]",
-            "de": "Wie oft haben Sie auf eine Umfrage in einer Story reagiert? [pro Tag]",
-            "nl": "Hoe vaak heb je gereageerd op een poll in een story? [per dag]",
-        },
-    },
-    "story_interaction_questions": {
-        "extraction_function": ef.extract_story_interaction_questions,
-        "patterns": ["questions"],
-        "title": {
-            "en": "How often did you answer a question in a story? [per day]",
-            "de": "Wie oft haben Sie eine Frage in einer Story beantwortet? [pro Tag]",
-            "nl": "Hoe vaak heb je een vraag in een story beantwoord? [per dag]",
-        },
-    },
-    "story_interaction_quizzes": {
-        "extraction_function": ef.extract_story_interaction_quizzes,
-        "patterns": ["quizzes"],
-        "title": {
-            "en": "How often did you answer a quiz in a story? [per day]",
-            "de": "Wie oft haben Sie ein Quiz in einer Story beantwortet? [pro Tag]",
-            "nl": "Hoe vaak heb je dag een quiz in een story beantwoord? [per dag]",
+            "en": "How often did you interact with Stories? [per day]",
+            "de": "Wie oft haben Sie mit Stories interagiert? [pro Tag]",
+            "nl": "Hoe vaak heb je met Stories geïnteracteerd? [per dag]",
         },
     },
     "posts_created": {
@@ -253,12 +151,12 @@ extraction_dict = {
             "nl": "Heb je contact synchronisatie ingeschakeld?",
         },
     },
-    "personal_information": {
-        "extraction_function": ef.extract_personal_information,
+    "private_account": {
+        "extraction_function": ef.extract_private_account,
         "patterns": ["personal_information/personal_information.json"],
         "title": {
-            "en": "Do you have a profile image, email, phone, a private account, and do you use your real name?",
-            "de": "Haben Sie ein Profilbild, E-Mail, Telefon, und ein privates Konto? Verwenden Sie einen echten Namen?",
+            "en": "Do you have private (not public) account on Instagram?",
+            "de": "Haben Sie ein privates (nicht öffentliches) Konto auf Instagram?",
             "nl": "Heb je een profielfoto, e-mail, telefoon, een privéaccount en gebruik je je echte naam?",
         },
     },

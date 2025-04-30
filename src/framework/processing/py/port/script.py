@@ -585,7 +585,217 @@ def extract_instagram_content_from_zip_folder(zip_file_path, file_key, patterns)
                     print("Could not find posts_viewed or videos_watched files")
                     return None, "combined_viewing_data"
 
-            # Regular handling for search history
+            # Special handling for combined_views (posts + videos)
+            if file_key == "combined_views":
+                posts_viewed_data = None
+                videos_watched_data = None
+
+                # Find and load posts_viewed.json
+                for file_name in file_names:
+                    if file_name.endswith(".json") and "posts_viewed" in file_name:
+                        try:
+                            with zip_ref.open(file_name) as json_file:
+                                json_content = json_file.read()
+                                posts_viewed_data = json.loads(json_content)
+                                break
+                        except Exception as e:
+                            print(f"Error reading posts_viewed file {file_name}: {e}")
+
+                # Find and load videos_watched.json
+                for file_name in file_names:
+                    if file_name.endswith(".json") and "videos_watched" in file_name:
+                        try:
+                            with zip_ref.open(file_name) as json_file:
+                                json_content = json_file.read()
+                                videos_watched_data = json.loads(json_content)
+                                break
+                        except Exception as e:
+                            print(f"Error reading videos_watched file {file_name}: {e}")
+
+                # Combine the data
+                if posts_viewed_data or videos_watched_data:
+                    combined_data = {
+                        "posts_viewed": posts_viewed_data or {},
+                        "videos_watched": videos_watched_data or {},
+                    }
+                    return combined_data, "combined_views"
+                else:
+                    print("Could not find posts_viewed or videos_watched files")
+                    return None, "combined_views"
+
+            # Special handling for combined_blocks (blocked + restricted profiles)
+            if file_key == "combined_blocks":
+                blocked_data = None
+                restricted_data = None
+
+                # Find and load blocked_accounts.json
+                for file_name in file_names:
+                    if file_name.endswith(".json") and "blocked_accounts" in file_name:
+                        try:
+                            with zip_ref.open(file_name) as json_file:
+                                json_content = json_file.read()
+                                blocked_data = json.loads(json_content)
+                                break
+                        except Exception as e:
+                            print(f"Error reading blocked_accounts file {file_name}: {e}")
+
+                # Find and load restricted_accounts.json
+                for file_name in file_names:
+                    if file_name.endswith(".json") and "restricted_accounts" in file_name:
+                        try:
+                            with zip_ref.open(file_name) as json_file:
+                                json_content = json_file.read()
+                                restricted_data = json.loads(json_content)
+                                break
+                        except Exception as e:
+                            print(f"Error reading restricted_accounts file {file_name}: {e}")
+
+                # Combine the data
+                if blocked_data or restricted_data:
+                    combined_data = {
+                        "blocked_profiles": blocked_data or {},
+                        "restricted_profiles": restricted_data or {},
+                    }
+                    return combined_data, "combined_blocks"
+                else:
+                    print("Could not find blocked_accounts or restricted_accounts files")
+                    return None, "combined_blocks"
+
+            # Special handling for combined_comments (post + reel comments)
+            if file_key == "combined_comments":
+                post_comments_data = None
+                reel_comments_data = None
+
+                # Find and load post_comments.json
+                for file_name in file_names:
+                    if file_name.endswith(".json") and "post_comments_1" in file_name:
+                        try:
+                            with zip_ref.open(file_name) as json_file:
+                                json_content = json_file.read()
+                                post_comments_data = json.loads(json_content)
+                                break
+                        except Exception as e:
+                            print(f"Error reading post_comments file {file_name}: {e}")
+
+                # Find and load reels_comments.json
+                for file_name in file_names:
+                    if file_name.endswith(".json") and "reels_comments" in file_name:
+                        try:
+                            with zip_ref.open(file_name) as json_file:
+                                json_content = json_file.read()
+                                reel_comments_data = json.loads(json_content)
+                                break
+                        except Exception as e:
+                            print(f"Error reading reels_comments file {file_name}: {e}")
+
+                # Combine the data
+                if post_comments_data or reel_comments_data:
+                    combined_data = {
+                        "post_comments": post_comments_data or {},
+                        "reel_comments": reel_comments_data or {},
+                    }
+                    return combined_data, "combined_comments"
+                else:
+                    print("Could not find post_comments or reels_comments files")
+                    return None, "combined_comments"
+
+            # Special handling for combined_likes (posts + stories + comments)
+            if file_key == "combined_likes":
+                posts_liked_data = None
+                stories_liked_data = None
+                comments_liked_data = None
+
+                # Find and load liked_posts.json
+                for file_name in file_names:
+                    if file_name.endswith(".json") and "liked_posts" in file_name:
+                        try:
+                            with zip_ref.open(file_name) as json_file:
+                                json_content = json_file.read()
+                                posts_liked_data = json.loads(json_content)
+                                break
+                        except Exception as e:
+                            print(f"Error reading liked_posts file {file_name}: {e}")
+
+                # Find and load story_likes.json
+                for file_name in file_names:
+                    if file_name.endswith(".json") and "story_likes" in file_name:
+                        try:
+                            with zip_ref.open(file_name) as json_file:
+                                json_content = json_file.read()
+                                stories_liked_data = json.loads(json_content)
+                                break
+                        except Exception as e:
+                            print(f"Error reading story_likes file {file_name}: {e}")
+
+                # Find and load liked_comments.json
+                for file_name in file_names:
+                    if file_name.endswith(".json") and "liked_comments" in file_name:
+                        try:
+                            with zip_ref.open(file_name) as json_file:
+                                json_content = json_file.read()
+                                comments_liked_data = json.loads(json_content)
+                                break
+                        except Exception as e:
+                            print(f"Error reading liked_comments file {file_name}: {e}")
+
+                # Combine the data
+                if posts_liked_data or stories_liked_data or comments_liked_data:
+                    combined_data = {
+                        "posts_liked": posts_liked_data or {},
+                        "stories_liked": stories_liked_data or {},
+                        "comments_liked": comments_liked_data or {},
+                    }
+                    return combined_data, "combined_likes"
+                else:
+                    print("Could not find liked_posts, story_likes, or liked_comments files")
+                    return None, "combined_likes"
+
+            # Special handling for combined_story_interactions (all story interactions)
+            if file_key == "combined_story_interactions":
+                countdowns_data = None
+                emoji_sliders_data = None
+                polls_data = None
+                questions_data = None
+                quizzes_data = None
+
+                # Find and load all story interaction files
+                interaction_types = ["countdowns", "emoji_sliders", "polls", "questions", "quizzes"]
+                for interaction_type in interaction_types:
+                    for file_name in file_names:
+                        if file_name.endswith(".json") and interaction_type in file_name:
+                            try:
+                                with zip_ref.open(file_name) as json_file:
+                                    json_content = json_file.read()
+                                    data = json.loads(json_content)
+                                    if interaction_type == "countdowns":
+                                        countdowns_data = data
+                                    elif interaction_type == "emoji_sliders":
+                                        emoji_sliders_data = data
+                                    elif interaction_type == "polls":
+                                        polls_data = data
+                                    elif interaction_type == "questions":
+                                        questions_data = data
+                                    elif interaction_type == "quizzes":
+                                        quizzes_data = data
+                                    break
+                            except Exception as e:
+                                print(f"Error reading {interaction_type} file {file_name}: {e}")
+
+                # Combine the data
+                if any([countdowns_data, emoji_sliders_data, polls_data, questions_data, quizzes_data]):
+                    combined_data = {
+                        "countdowns": countdowns_data or {},
+                        "emoji_sliders": emoji_sliders_data or {},
+                        "polls": polls_data or {},
+                        "questions": questions_data or {},
+                        "quizzes": quizzes_data or {},
+                    }
+                    return combined_data, "combined_story_interactions"
+                else:
+                    print("Could not find any story interaction files")
+                    return None, "combined_story_interactions"
+
+             # Regular handling for search history
             if file_key == "search_history":
                 for file_name in file_names:
                     if (
@@ -980,7 +1190,7 @@ def prompt_consent(data, meta_data, locale, platform="Instagram"):
                 props.Translatable(
                     {
                         "en": f"Overview of additional {platform_names.get(platform, platform)} data",
-                        "de": f"Übersicht von zusätzlichen {platform_names.get(platform, platform)} Informationen",
+                        "de": f"Übersicht, wo wenig oder keine {platform_names.get(platform, platform)}-Informationen vorliegen",
                         "nl": f"Binary {platform_names.get(platform, platform)} data",
                     }
                 ),

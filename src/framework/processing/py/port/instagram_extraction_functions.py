@@ -82,6 +82,222 @@ def translate(value, locale, dummy_decider=None):
 ############################
 
 
+def extract_combined_views(combined_data, locale):
+    """Combine the results from posts_seen and videos_seen functions"""
+    tl_date = translate("date", locale)
+    tl_value = translate(
+        {
+            "en": "Count of viewed content",
+            "de": "Anzahl der gesehenen Posts und Videos",
+            "nl": "Aantal bekeken inhoud",
+        },
+        locale,
+    )
+
+    # Initialize an empty DataFrame to store the combined results
+    combined_df = pd.DataFrame(columns=[tl_date, tl_value])
+
+    # Extract posts viewed if available
+    posts_data = combined_data.get("posts_viewed", {})
+    if posts_data:
+        posts_df = extract_posts_seen(posts_data, locale)
+        if not posts_df.empty:
+            combined_df = posts_df.rename(columns={posts_df.columns[1]: tl_value})
+
+    # Extract videos watched if available
+    videos_data = combined_data.get("videos_watched", {})
+    if videos_data:
+        videos_df = extract_videos_seen(videos_data, locale)
+        if not videos_df.empty:
+            # If we already have posts data, merge with videos data
+            if not combined_df.empty:
+                videos_df = videos_df.rename(columns={videos_df.columns[1]: tl_value})
+                # Merge on date and sum the counts
+                combined_df = pd.merge(combined_df, videos_df, on=tl_date, how='outer', suffixes=('_posts', '_videos'))
+                combined_df[tl_value] = combined_df.filter(like=tl_value).sum(axis=1, skipna=True).fillna(0).astype(int)
+                combined_df = combined_df[[tl_date, tl_value]]
+            else:
+                combined_df = videos_df.rename(columns={videos_df.columns[1]: tl_value})
+
+    # Sort by date
+    if not combined_df.empty:
+        combined_df = combined_df.sort_values(by=tl_date).reset_index(drop=True)
+
+    return combined_df
+
+def extract_combined_blocks(combined_data, locale):
+    """Combine the results from blocked_profiles and restricted_profiles functions"""
+    tl_date = translate("date", locale)
+    tl_value = translate(
+        {
+            "en": "Count of blocked/restricted profiles",
+            "de": "Anzahl blockierter und eingeschränkter Profile",
+            "nl": "Aantal geblokkeerde/beperkte profielen",
+        },
+        locale,
+    )
+
+    # Initialize an empty DataFrame to store the combined results
+    combined_df = pd.DataFrame(columns=[tl_date, tl_value])
+
+    # Extract blocked profiles if available
+    blocked_data = combined_data.get("blocked_profiles", {})
+    if blocked_data:
+        blocked_df = extract_blocked_profiles(blocked_data, locale)
+        if not blocked_df.empty:
+            combined_df = blocked_df.rename(columns={blocked_df.columns[1]: tl_value})
+
+    # Extract restricted profiles if available
+    restricted_data = combined_data.get("restricted_profiles", {})
+    if restricted_data:
+        restricted_df = extract_restricted_profiles(restricted_data, locale)
+        if not restricted_df.empty:
+            if not combined_df.empty:
+                restricted_df = restricted_df.rename(columns={restricted_df.columns[1]: tl_value})
+                combined_df = pd.merge(combined_df, restricted_df, on=tl_date, how='outer', suffixes=('_blocked', '_restricted'))
+                combined_df[tl_value] = combined_df.filter(like=tl_value).sum(axis=1, skipna=True).fillna(0).astype(int)
+                combined_df = combined_df[[tl_date, tl_value]]
+            else:
+                combined_df = restricted_df.rename(columns={restricted_df.columns[1]: tl_value})
+
+    if not combined_df.empty:
+        combined_df = combined_df.sort_values(by=tl_date).reset_index(drop=True)
+
+    return combined_df
+
+def extract_combined_comments(combined_data, locale):
+    """Combine the results from post_comments and reel_comments functions"""
+    tl_date = translate("date", locale)
+    tl_value = translate(
+        {
+            "en": "Count of comments",
+            "de": "Anzahl der Kommentare",
+            "nl": "Aantal reacties",
+        },
+        locale,
+    )
+
+    # Initialize an empty DataFrame to store the combined results
+    combined_df = pd.DataFrame(columns=[tl_date, tl_value])
+
+    # Extract post comments if available
+    post_comments_data = combined_data.get("post_comments", {})
+    if post_comments_data:
+        post_comments_df = extract_post_comments(post_comments_data, locale)
+        if not post_comments_df.empty:
+            combined_df = post_comments_df.rename(columns={post_comments_df.columns[1]: tl_value})
+
+    # Extract reel comments if available
+    reel_comments_data = combined_data.get("reel_comments", {})
+    if reel_comments_data:
+        reel_comments_df = extract_reel_comments(reel_comments_data, locale)
+        if not reel_comments_df.empty:
+            if not combined_df.empty:
+                reel_comments_df = reel_comments_df.rename(columns={reel_comments_df.columns[1]: tl_value})
+                combined_df = pd.merge(combined_df, reel_comments_df, on=tl_date, how='outer', suffixes=('_post', '_reel'))
+                combined_df[tl_value] = combined_df.filter(like=tl_value).sum(axis=1, skipna=True).fillna(0).astype(int)
+                combined_df = combined_df[[tl_date, tl_value]]
+            else:
+                combined_df = reel_comments_df.rename(columns={reel_comments_df.columns[1]: tl_value})
+
+    if not combined_df.empty:
+        combined_df = combined_df.sort_values(by=tl_date).reset_index(drop=True)
+
+    return combined_df
+
+def extract_combined_likes(combined_data, locale):
+    """Combine the results from posts_liked, stories_liked and comments_liked functions"""
+    tl_date = translate("date", locale)
+    tl_value = translate(
+        {
+            "en": "Count of liked content",
+            "de": "Anzahl der 'gelikten' Posts, Stories und Videos",
+            "nl": "Aantal gelikete inhoud",
+        },
+        locale,
+    )
+
+    # Initialize an empty DataFrame to store the combined results
+    combined_df = pd.DataFrame(columns=[tl_date, tl_value])
+
+    # Process each type of liked content
+    data_sources = [
+        ("posts_liked", extract_posts_liked),
+        ("stories_liked", extract_stories_liked),
+        ("comments_liked", extract_comments_liked)
+    ]
+
+    for source_key, extract_func in data_sources:
+        source_data = combined_data.get(source_key, {})
+        if source_data:
+            source_df = extract_func(source_data, locale)
+            if not source_df.empty:
+                if combined_df.empty:
+                    combined_df = source_df.rename(columns={source_df.columns[1]: tl_value})
+                else:
+                    source_df = source_df.rename(columns={source_df.columns[1]: f"{tl_value}_{source_key}"})
+                    combined_df = pd.merge(combined_df, source_df, on=tl_date, how='outer')
+
+    # Sum up all the like counts if we have multiple sources
+    if not combined_df.empty and len(combined_df.columns) > 2:
+        like_columns = [col for col in combined_df.columns if col != tl_date]
+        combined_df[tl_value] = combined_df[like_columns].sum(axis=1, skipna=True).fillna(0).astype(int)
+        combined_df = combined_df[[tl_date, tl_value]]
+
+    if not combined_df.empty:
+        combined_df = combined_df.sort_values(by=tl_date).reset_index(drop=True)
+
+    return combined_df
+
+def extract_combined_story_interactions(combined_data, locale):
+    """Combine all story interaction functions (countdowns, emoji_sliders, polls, questions, quizzes)"""
+    tl_date = translate("date", locale)
+    tl_value = translate(
+        {
+            "en": "Count of story interactions",
+            "de": "Anzahl der Story-Interaktionen",
+            "nl": "Aantal story-interacties",
+        },
+        locale,
+    )
+
+    # Initialize an empty DataFrame to store the combined results
+    combined_df = pd.DataFrame(columns=[tl_date, tl_value])
+
+    # List of all story interaction types and their extraction functions
+    interaction_types = [
+        ("countdowns", extract_story_interaction_countdowns),
+        ("emoji_sliders", extract_story_interaction_emoji_sliders),
+        ("polls", extract_story_interaction_polls),
+        ("questions", extract_story_interaction_questions),
+        ("quizzes", extract_story_interaction_quizzes)
+    ]
+
+    # Process each type of story interaction
+    for interaction_type, extract_func in interaction_types:
+        data = combined_data.get(interaction_type, {})
+        if data:
+            df = extract_func(data, locale)
+            if not df.empty:
+                if combined_df.empty:
+                    combined_df = df.rename(columns={df.columns[1]: tl_value})
+                else:
+                    df = df.rename(columns={df.columns[1]: f"{tl_value}_{interaction_type}"})
+                    combined_df = pd.merge(combined_df, df, on=tl_date, how='outer')
+
+    # Sum up all interaction counts if we have multiple sources
+    if not combined_df.empty and len(combined_df.columns) > 2:
+        interaction_columns = [col for col in combined_df.columns if col != tl_date]
+        combined_df[tl_value] = combined_df[interaction_columns].sum(axis=1, skipna=True).fillna(0).astype(int)
+        combined_df = combined_df[[tl_date, tl_value]]
+
+    if not combined_df.empty:
+        combined_df = combined_df.sort_values(by=tl_date).reset_index(drop=True)
+
+    return combined_df
+
+
+
 def extract_time_spent(combined_data, locale):
     """
     Calculate the total time spent on Instagram per day.
@@ -196,106 +412,6 @@ def extract_time_spent(combined_data, locale):
     times = [round(t) for t in daily_time_spent.values()]  # Round to whole seconds
 
     result_df = pd.DataFrame({tl_date: dates, tl_value: times})
-    result_df = result_df.sort_values(by=tl_date).reset_index(drop=True)
-
-    return result_df
-
-
-def extract_session_frequency(combined_data, locale):
-    """
-    Calculate how many Instagram sessions a user had per day.
-    A session is defined as a sequence of activities with less than 60 seconds between them.
-    Sessions reset at midnight.
-
-    Works with either posts_viewed, videos_watched, or both.
-    """
-
-    tl_date = translate("date", locale)
-    tl_value = translate(
-        {
-            "en": "Number of sessions",
-            "de": "Anzahl der Sitzungen",
-            "nl": "Aantal sessies",
-        },
-        locale,
-    )
-
-    # Constants
-    SESSION_BREAK_THRESHOLD = 180  # seconds
-
-    # Extract data from the combined format
-    posts_viewed_json = combined_data.get("posts_viewed", {})
-    videos_watched_json = combined_data.get("videos_watched", {})
-
-    # Get timestamps from post views (if available)
-    post_timestamps = []
-    if posts_viewed_json:
-        post_timestamps = [
-            entry["string_map_data"]["Time"]["timestamp"]
-            for entry in posts_viewed_json.get("impressions_history_posts_seen", [])
-            if "Time" in entry["string_map_data"]
-        ]
-
-    # Get timestamps from video views (if available)
-    video_timestamps = []
-    if videos_watched_json:
-        video_timestamps = [
-            entry["string_map_data"]["Time"]["timestamp"]
-            for entry in videos_watched_json.get(
-                "impressions_history_videos_watched", []
-            )
-            if "Time" in entry["string_map_data"]
-        ]
-
-    # Combine and sort all timestamps
-    all_timestamps = sorted(post_timestamps + video_timestamps)
-
-    if not all_timestamps:
-        return pd.DataFrame(columns=[tl_date, tl_value])
-
-    # Count sessions per day
-    from datetime import datetime
-
-    daily_sessions = {}
-    last_time = None
-    current_day = None
-
-    for ts in all_timestamps:
-        current_time = datetime.fromtimestamp(ts)
-        new_day = current_time.date()
-
-        # Initialize the day in our dictionary if needed
-        if new_day not in daily_sessions:
-            daily_sessions[new_day] = 0
-
-        # Check if we're starting a new session
-        start_new_session = False
-
-        if last_time is None:
-            # First activity
-            start_new_session = True
-        elif new_day != current_day:
-            # Day changed, start new session
-            start_new_session = True
-        elif (current_time - last_time).total_seconds() > SESSION_BREAK_THRESHOLD:
-            # More than threshold time since last activity
-            start_new_session = True
-
-        if start_new_session:
-            daily_sessions[new_day] += 1
-
-        # Update for the next iteration
-        last_time = current_time
-        current_day = new_day
-
-    # Convert to DataFrame
-    dates = [
-        epoch_to_date(int(datetime(d.year, d.month, d.day).timestamp()))
-        for d in daily_sessions.keys()
-    ]
-    sessions = list(daily_sessions.values())
-
-    result_df = pd.DataFrame({tl_date: dates, tl_value: sessions})
     result_df = result_df.sort_values(by=tl_date).reset_index(drop=True)
 
     return result_df
@@ -431,28 +547,6 @@ def extract_videos_seen(videos_seen_json, locale):
     ].size()  # count number of rows per day
 
     return aggregated_df.reset_index(name=tl_value)
-
-
-def extract_paid_subscription(paid_subscription_json, locale):
-    """extract ads_information/instagram_ads_and_businesses/subscription_for_no_ads -> dummy whether user has such a subscription"""
-
-    tl_value = translate(
-        {
-            "en": "Subscription for no ads",
-            "de": "Abo-Option für Werbefreiheit",
-            "nl": "Abonnement zonder advertenties",
-        },
-        locale,
-    )
-
-    value = None
-
-    if paid_subscription_json["label_values"][0]["value"] == "Inaktiv":
-        value = translate("dummy", locale, False)
-    else:
-        value = translate("dummy", locale, True)
-
-    return pd.DataFrame([value], columns=[tl_value])
 
 
 def extract_blocked_profiles(blocked_profiles_json, locale):
@@ -1039,57 +1133,17 @@ def extract_contact_syncing(contact_syncing_json, locale):
     return pd.DataFrame([translate("dummy", locale, value)], columns=[tl_value])
 
 
-def extract_personal_information(personal_information_json, locale):
+def extract_private_account(personal_information_json, locale):
     """
-    extract personal_information/personal_information/personal_information.json -> dummies whether user has email, phone, and private account
+    extract personal_information/personal_information/personal_information.json -> dummies whether user has private account
     """
 
     tl_value = translate(
-        {
-            "en": [
-                "Email",
-                "Phone",
-                "Private account",
-            ],
-            "de": [
-                "Email",
-                "Telefon",
-                "Privates Konto",
-            ],
-            "nl": [
-                "Email",
-                "Telefoon",
-                "Privé-account",
-            ],
-        },
-        locale,
+        { "en":"Private account", "de": "Privates Konto", "nl": "Privé-account" }, locale
     )
 
     # check if information present
-    email, phone, private_account = None, None, None
-
-    for k in ["Email", "E-Mail-Adresse"]:  # keys are language specific
-        if k in personal_information_json["profile_user"][0]["string_map_data"]:
-            email = (
-                personal_information_json["profile_user"][0]["string_map_data"][k][
-                    "value"
-                ]
-                != "False"
-            )
-            break
-
-    for k in [
-        "Phone Confirmed",
-        "Telefonnummer best\u00c3\u00a4tigt",
-    ]:  # keys are language specific
-        if k in personal_information_json["profile_user"][0]["string_map_data"]:
-            phone = (
-                personal_information_json["profile_user"][0]["string_map_data"][k][
-                    "value"
-                ]
-                != "False"
-            )
-            break
+    private_account = None
 
     for k in ["Private Account", "Privates Konto"]:  # keys are language specific
         if k in personal_information_json["profile_user"][0]["string_map_data"]:
@@ -1098,13 +1152,7 @@ def extract_personal_information(personal_information_json, locale):
             ][k]["value"]
             break
 
-    result = pd.DataFrame(
-        {
-            tl_value[0]: [translate("dummy", locale, email)],
-            tl_value[1]: [translate("dummy", locale, phone)],
-            tl_value[2]: [translate("dummy", locale, private_account)],
-        }
-    )
+    result = pd.DataFrame( [translate("dummy", locale, private_account)], columns=[tl_value])
 
     return result
 
