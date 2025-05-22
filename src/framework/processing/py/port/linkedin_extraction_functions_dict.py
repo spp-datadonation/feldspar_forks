@@ -8,54 +8,54 @@ extraction_dict = {
         "extraction_function": ef.extract_connections,
         "patterns": ["Connections.csv"],
         "title": {
-            "en": "How many connections have you made per day and what information do they have?",
+            "en": "How many people have you connected with? [per day]",
             "de": "Mit wie vielen Personen haben Sie sich vernetzt? [pro Tag]",
-            "nl": "Hoeveel connecties heb je per dag gemaakt en welke informatie hebben ze?",
+            "nl": "Met hoeveel mensen heeft u zich verbonden? [per dag]",
         },
     },
     "comments": {
         "extraction_function": ef.extract_comments,
         "patterns": ["Comments.csv"],
         "title": {
-            "en": "How many comments have you made per day?",
-            "de": "Wie viele Kommentare haben Sie geschrieben? [pro Tag]",
-            "nl": "Hoeveel reacties heeft u per dag geplaatst?",
+            "en": "How often have you written comments? [per day]",
+            "de": "Wie oft haben Sie Kommentare geschrieben? [pro Tag]",
+            "nl": "Hoe vaak heeft u commentaar geschreven? [per dag]",
         },
     },
     "reactions": {
         "extraction_function": ef.extract_reactions,
         "patterns": ["Reactions.csv"],
         "title": {
-            "en": "What types of reactions have you given and how often per day?",
-            "de": "Welche Arten von Reaktionen haben Sie gegeben und wie oft? [pro Tag]",
-            "nl": "Welke soorten reacties heb je gegeven en hoe vaak per dag?",
+            "en": "How have you reacted, e.g. to posts, and how often? [per day]",
+            "de": "Wie haben Sie, bspw. auf Beiträge, reagiert und wie oft? [pro Tag]",
+            "nl": "Hoe heeft u gereageerd, bijv. op berichten, en hoe vaak? [per dag]",
         },
     },
     "shares": {
         "extraction_function": ef.extract_shares,
         "patterns": ["Shares.csv"],
         "title": {
-            "en": "How many posts have you shared per day?",
-            "de": "Wie viele Beiträge haben Sie geteilt? [pro Tag]",
-            "nl": "Hoeveel berichten heeft u per dag gedeeld?",
+            "en": "How often have you shared posts? [per day]",
+            "de": "Wie oft haben Sie Beiträge geteilt? [pro Tag]",
+            "nl": "Hoe vaak heeft u berichten gedeeld? [per dag]",
         },
     },
     "messages": {
         "extraction_function": ef.extract_messages,
         "patterns": ["messages.csv"],
         "title": {
-            "en": "How many messages have you exchanged per day and with how many people?",
-            "de": "Wie viele Nachrichten haben Sie ausgetauscht? [pro Tag]",
-            "nl": "Hoeveel berichten heb je per dag uitgewisseld en met hoeveel mensen?",
+            "en": "How often have you exchanged messages? [per day]",
+            "de": "Wie oft haben Sie Nachrichten ausgetauscht? [pro Tag]",
+            "nl": "Hoe vaak heeft u berichten uitgewisseld? [per dag]",
         },
     },
     "search_queries": {
         "extraction_function": ef.extract_search_queries,
         "patterns": ["SearchQueries.csv"],
         "title": {
-            "en": "How many searches have you performed per day?",
-            "de": "Wie viele Suchanfragen haben Sie durchgeführt? [pro Tag]",
-            "nl": "Hoeveel zoekopdrachten heb je per dag uitgevoerd?",
+            "en": "How often have you searched for something? [per day]",
+            "de": "Wie oft haben Sie nach etwas gesucht? [pro Tag]",
+            "nl": "Hoe vaak heeft u naar iets gezocht? [per dag]",
         },
     },
     "interests": {
@@ -64,16 +64,16 @@ extraction_dict = {
         "title": {
             "en": "What interests has LinkedIn inferred about you?",
             "de": "Welche Interessen hat LinkedIn über Sie abgeleitet?",
-            "nl": "Welke interesses heeft LinkedIn over je afgeleid?",
+            "nl": "Welke interesses heeft LinkedIn over u afgeleid?",
         },
     },
     "member_follows": {
         "extraction_function": ef.extract_member_follows,
         "patterns": ["Member_Follows.csv"],
         "title": {
-            "en": "How many LinkedIn members have you followed/unfollowed per day?",
+            "en": "How many LinkedIn members have you followed or unfollowed? [per day]",
             "de": "Wie vielen LinkedIn-Mitgliedern sind Sie gefolgt bzw. nicht mehr gefolgt? [pro Tag]",
-            "nl": "Hoeveel LinkedIn-leden bent u per dag gaan volgen/ontvolgen?",
+            "nl": "Hoeveel LinkedIn-leden bent u gaan volgen of niet meer gaan volgen? [per dag]",
         },
     },
     "profile": {
@@ -82,7 +82,7 @@ extraction_dict = {
         "title": {
             "en": "What information is included in your profile?",
             "de": "Welche Informationen sind in Ihrem Profil enthalten?",
-            "nl": "Welke informatie is opgenomen in je profiel?",
+            "nl": "Welke informatie is in uw profiel opgenomen?",
         },
     },
     "positions": {
@@ -90,26 +90,26 @@ extraction_dict = {
         "patterns": ["Positions.csv"],
         "title": {
             "en": "What details are included in your job positions?",
-            "de": "Welche Details sind in Ihren beruflichen Positionen enthalten?",
-            "nl": "Welke details zijn opgenomen in je werkposities?",
+            "de": "Welche Details sind zu Ihren beruflichen Positionen enthalten?",
+            "nl": "Welke details zijn in uw werkposities opgenomen?",
         },
     },
     "device_usage": {
         "extraction_function": ef.extract_device_usage,
         "patterns": ["Logins.csv"],
         "title": {
-            "en": "What user agents have you used to access LinkedIn?",
-            "de": "Mit welchen Brower/Geräte haben Sie auf LinkedIn zugegriffen?",
-            "nl": "Welke user agents heb je gebruikt om toegang te krijgen tot LinkedIn?",
+            "en": "Which browsers/devices have you used to access LinkedIn?",
+            "de": "Mit welchen Browsern/Geräten haben Sie auf LinkedIn zugegriffen?",
+            "nl": "Met welke browsers/apparaten heeft u toegang gekregen tot LinkedIn?",
         },
     },
     "saved_jobs": {
         "extraction_function": ef.extract_saved_jobs,
         "patterns": ["Saved Jobs.csv"],
         "title": {
-            "en": "How many jobs have you saved per day?",
-            "de": "Wie viele Jobs haben Sie gespeichert? [pro Tag]",
-            "nl": "Hoeveel vacatures heb je per dag opgeslagen?",
+            "en": "How often have you saved jobs? [per day]",
+            "de": "Wie oft haben Sie Jobs gespeichert? [pro Tag]",
+            "nl": "Hoe vaak heeft u vacatures opgeslagen? [per dag]",
         },
     },
 }

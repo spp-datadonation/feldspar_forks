@@ -13,7 +13,7 @@ extraction_dict = {
         "title": {
             "en": "How much time did you spend on Instagram? [seconds per day]",
             "de": "Wie viel Zeit haben Sie auf Instagram verbracht? [Sekunden pro Tag]",
-            "nl": "Hoeveel tijd heb je op Instagram doorgebracht? [seconden per dag]",
+            "nl": "Hoeveel tijd heeft u op Instagram doorgebracht? [seconden per dag]",
         },
     },
     "ads_seen": {
@@ -21,8 +21,8 @@ extraction_dict = {
         "patterns": ["ads_viewed"],
         "title": {
             "en": "How often did you see ads? [per day]",
-            "de": "Wie oft haben Sie Werbung angesehen? [pro Tag]",
-            "nl": "Hoe vaak heb je advertenties gezien? [per dag]",
+            "de": "Wie oft haben Sie Werbung gesehen? [pro Tag]",
+            "nl": "Hoe vaak heeft u advertenties gezien? [per dag]",
         },
     },
     "ads_clicked": {
@@ -31,7 +31,7 @@ extraction_dict = {
         "title": {
             "en": "On how many ads did you click? [per day]",
             "de": "Wie oft haben Sie Werbung angeklickt? [pro Tag]",
-            "nl": "Hoeveel productnamen (advertenties) heb je aangeklikt? [per dag]",
+            "nl": "Hoe vaak heeft u advertenties aangeklikt? [per dag]",
         },
     },
     "recently_viewed_items": {
@@ -40,16 +40,16 @@ extraction_dict = {
         "title": {
             "en": "Which shopping items have you recently viewed?",
             "de": "Welche Einkaufsartikel haben Sie sich kürzlich angesehen?",
-            "nl": "Welke winkelartikelen heb je onlangs bekeken?",
+            "nl": "Welke winkelartikelen heeft u onlangs bekeken?",
         },
     },
     "combined_views": {
         "extraction_function": ef.extract_combined_views,
         "patterns": ["posts_viewed", "videos_watched"],
         "title": {
-            "en": "How often did you view Instagram content? [per day]",
-            "de": "Wie oft haben Sie Posts und Videos angesehen? [pro Tag]",
-            "nl": "Hoe vaak heb je Instagram-inhoud bekeken? [per dag]",
+            "en": "How many posts and videos have you seen? [per day]",
+            "de": "Wie viele Posts und Videos haben Sie gesehen? [pro Tag]",
+            "nl": "Hoeveel posts en video's heeft u bekeken? [per dag]",
         },
     },
     "combined_blocks": {
@@ -58,25 +58,25 @@ extraction_dict = {
         "title": {
             "en": "How often did you block or restrict other profiles? [per day]",
             "de": "Wie oft haben Sie andere Profile blockiert und eingeschränkt? [pro Tag]",
-            "nl": "Hoe vaak heb je andere profielen geblokkeerd of beperkt? [per dag]",
+            "nl": "Hoe vaak heeft u andere profielen geblokkeerd en beperkt? [per dag]",
         },
     },
     "combined_comments": {
         "extraction_function": ef.extract_combined_comments,
         "patterns": ["post_comments_1", "reels_comments"],
         "title": {
-            "en": "How often did you comment on Instagram content? [per day]",
+            "en": "How often have you commented on posts and reels? [per day]",
             "de": "Wie oft haben Sie Posts und Reels kommentiert? [pro Tag]",
-            "nl": "Hoe vaak heb je gereageerd op Instagram-inhoud? [per dag]",
+            "nl": "Hoe vaak heeft u posts en reels becommentarieerd? [per dag]",
         },
     },
     "combined_likes": {
         "extraction_function": ef.extract_combined_likes,
         "patterns": ["liked_posts", "story_likes", "liked_comments"],
         "title": {
-            "en": "How often did you like Instagram content? [per day]",
+            "en": "How often have you liked posts, stories or comments? [per day]",
             "de": "Wie oft haben Sie Posts, Stories oder Kommentare geliked? [pro Tag]",
-            "nl": "Hoe vaak heb je Instagram-inhoud geliked? [per dag]",
+            "nl": "Hoe vaak heeft u posts, stories of commentaren geliked? [per dag]",
         },
     },
     "combined_story_interactions": {
@@ -85,25 +85,25 @@ extraction_dict = {
         "title": {
             "en": "How often did you interact with Stories? [per day]",
             "de": "Wie oft haben Sie mit Stories interagiert? [pro Tag]",
-            "nl": "Hoe vaak heb je met Stories geïnteracteerd? [per dag]",
+            "nl": "Hoe vaak heeft u met Stories geïnteracteerd? [per dag]",
         },
     },
     "posts_created": {
         "extraction_function": ef.extract_posts_created,
         "patterns": ["posts_1"],
         "title": {
-            "en": "How often did you post and did you include location information?  [per day]",
-            "de": "Wie oft haben Sie Posts veröffentlicht und haben Sie Standortinformationen hinzugefügt? [pro Tag]",
-            "nl": "Hoe vaak heb je gepost en heb je locatie-informatie toegevoegd? [per dag]",
+            "en": "How often have you published posts and did you add location information? [per day]",
+            "de": "Wie oft haben Sie Posts veröffentlicht und hatten Sie Standortinformationen hinzugefügt? [pro Tag]",
+            "nl": "Hoe vaak heeft u posts gepubliceerd en heeft u locatie-informatie toegevoegd? [per dag]",
         },
     },
     "stories_created": {
         "extraction_function": ef.extract_stories_created,
         "patterns": ["stories"],
         "title": {
-            "en": "How often did you post stories and did you include location information? [per day]",
-            "de": "Wie oft haben Sie Stories gepostet und haben Sie Standortinformationen hinzugefügt? [pro Tag]",
-            "nl": "Hoe vaak heb je stories gepost en heb je locatie-informatie toegevoegd? [per dag]",
+            "en": "How often have you published stories and have you added location information? [per day]",
+            "de": "Wie oft haben Sie Stories veröffentlicht und haben Sie Standortinformationen hinzugefügt? [pro Tag]",
+            "nl": "Hoe vaak heeft u stories gepubliceerd en heeft u locatie-informatie toegevoegd? [per dag]",
         },
     },
     "reels_created": {
@@ -112,16 +112,16 @@ extraction_dict = {
         "title": {
             "en": "How often did you post reels? [per day]",
             "de": "Wie oft haben Sie Reels gepostet? [pro Tag]",
-            "nl": "Hoe vaak heb je reels gepost? [per dag]",
+            "nl": "Hoe vaak heeft u reels gepost? [per dag]",
         },
     },
     "followers_new": {
         "extraction_function": ef.extract_followers_new,
         "patterns": ["followers_1"],
         "title": {
-            "en": "How often did you gain new followers? [per day]",
+            "en": "How often do you have new followers? [per day]",
             "de": "Wie oft haben Sie neue Follower? [pro Tag]",
-            "nl": "Hoe vaak heb je nieuwe volgers gekregen? [per dag]",
+            "nl": "Hoe vaak heeft u nieuwe volgers? [per dag]",
         },
     },
     "search_history": {
@@ -130,7 +130,7 @@ extraction_dict = {
         "title": {
             "en": "How often have you searched on Instagram? [per day]",
             "de": "Wie oft haben Sie nach etwas gesucht? [pro Tag]",
-            "nl": "Hoe vaak heb je gezocht op Instagram? [per dag]",
+            "nl": "Hoe vaak heeft u naar iets gezocht? [per dag]",
         },
     },
     "messages": {
@@ -138,8 +138,8 @@ extraction_dict = {
         "patterns": ["message_1.json"],
         "title": {
             "en": "How often have you sent messages on Instagram? [per day]",
-            "de": "Wie oft haben Sie mit anderen Menschen auf Instagram geschrieben? [pro Tag]",
-            "nl": "Hoe vaak heb je berichten gestuurd op Instagram? [per dag]",
+            "de": "Wie oft haben Sie Nachrichten auf Instagram geschrieben? [pro Tag]",
+            "nl": "Hoe vaak heeft u berichten op Instagram geschreven? [per dag]",
         },
     },
     "contact_syncing": {
@@ -148,43 +148,43 @@ extraction_dict = {
         "title": {
             "en": "Have you enabled contact syncing?",
             "de": "Haben Sie die Kontaktsynchronisierung aktiviert?",
-            "nl": "Heb je contact synchronisatie ingeschakeld?",
+            "nl": "Heeft u de contactsynchronisatie geactiveerd?",
         },
     },
     "private_account": {
         "extraction_function": ef.extract_private_account,
         "patterns": ["personal_information/personal_information.json"],
         "title": {
-            "en": "Do you have private (not public) account on Instagram?",
+            "en": "Do you have a private (not public) account on Instagram?",
             "de": "Haben Sie ein privates (nicht öffentliches) Konto auf Instagram?",
-            "nl": "Heb je een profielfoto, e-mail, telefoon, een privéaccount en gebruik je je echte naam?",
+            "nl": "Heeft u een privé (niet openbaar) account op Instagram?",
         },
     },
     "topic_interests": {
         "extraction_function": ef.extract_topic_interests,
         "patterns": ["your_topics"],
         "title": {
-            "en": "What are your Topics inferred by Instagram?",
-            "de": "Was sind Ihre, von Instagram abgeleiteten, Themen?",
-            "nl": "Je onderwerpen afgeleid door Instagram?",
+            "en": "What interests has Instagram inferred about you?",
+            "de": "Welche Interessen hat Instagram über Sie abgeleitet?",
+            "nl": "Welke interesses heeft Instagram over u afgeleid?",
         },
     },
     "login_activity": {
         "extraction_function": ef.extract_login_activity,
         "patterns": ["login_activity"],
         "title": {
-            "en": "When and with which user agent did you log in to Instagram?",
-            "de": "Wann und mit welchem Gerät haben Sie sich bei Instagram angemeldet?",
-            "nl": "Wanneer en met welke user-agent heb je ingelogd op Instagram?",
+            "en": "When and with which device/browser did you log in to Instagram?",
+            "de": "Wann und mit welchem Gerät/Browser haben Sie sich bei Instagram angemeldet?",
+            "nl": "Wanneer en met welk apparaat/browser heeft u zich bij Instagram aangemeld?",
         },
     },
     "logout_activity": {
         "extraction_function": ef.extract_logout_activity,
         "patterns": ["logout_activity"],
         "title": {
-            "en": "When and with which user agent did you log out of Instagram?",
-            "de": "Wann und mit welchem Gerät haben Sie sich Instagram abgemeldet?",
-            "nl": "Wanneer en met welke user agent heb je uitgelogd op Instagram?",
+            "en": "When and with which device/browser did you log out of Instagram?",
+            "de": "Wann und mit welchem Gerät/Browser haben Sie sich bei Instagram abgemeldet?",
+            "nl": "Wanneer en met welk apparaat/browser heeft u zich bij Instagram afgemeld?",
         },
     },
 }
