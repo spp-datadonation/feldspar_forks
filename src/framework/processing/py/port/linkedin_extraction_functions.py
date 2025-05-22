@@ -64,9 +64,9 @@ def extract_connections(connections_csv, locale):
     tl_date = translate("date", locale)
     tl_count = translate(
         {
-            "en": "Number of connections",
-            "de": "Anzahl der Kontakte",
-            "nl": "Aantal connecties",
+            "en": "Number of people",
+            "de": "Anzahl der Personen",
+            "nl": "Aantal mensen",
         },
         locale,
     )
@@ -218,9 +218,9 @@ def extract_reactions(reactions_csv, locale):
     tl_date = translate("date", locale)
     tl_type = translate(
         {
-            "en": "Reaction Type",
-            "de": "Reaktionstyp",
-            "nl": "Reactietype",
+            "en": "Reaction",
+            "de": "Reaktion",
+            "nl": "Reactie",
         },
         locale,
     )
@@ -278,9 +278,9 @@ def extract_shares(shares_csv, locale):
     tl_date = translate("date", locale)
     tl_count = translate(
         {
-            "en": "Number of shares",
-            "de": "Anzahl der Shares",
-            "nl": "Aantal shares",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -411,9 +411,9 @@ def extract_search_queries(search_queries_csv, locale):
     tl_date = translate("date", locale)
     tl_count = translate(
         {
-            "en": "Number of searches",
-            "de": "Anzahl der Suchanfragen",
-            "nl": "Aantal zoekopdrachten",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -455,9 +455,9 @@ def extract_interests(ad_targeting_csv, locale):
 
     tl_interest = translate(
         {
-            "en": "LinkedIn Interest",
-            "de": "LinkedIn-Interesse",
-            "nl": "LinkedIn-interesse",
+            "en": "Interest",
+            "de": "Interesse",
+            "nl": "Interesse",
         },
         locale,
     )
@@ -595,9 +595,9 @@ def extract_profile(profile_csv, locale):
     )
     tl_has_value = translate(
         {
-            "en": "Has Value",
-            "de": "Information vorhanden",
-            "nl": "Heeft waarde",
+            "en": "Value",
+            "de": "Information",
+            "nl": "Waarde",
         },
         locale,
     )
@@ -646,41 +646,41 @@ def extract_positions(positions_csv, locale):
 
     tl_has_company = translate(
         {
-            "en": "Has Company Name",
-            "de": "Hat Firmenname",
-            "nl": "Heeft Bedrijfsnaam",
+            "en": "Company Name",
+            "de": "Firmenname",
+            "nl": "Bedrijfsnaam",
         },
         locale,
     )
     tl_has_title = translate(
         {
-            "en": "Has Title",
-            "de": "Hat Titel",
-            "nl": "Heeft Titel",
+            "en": "Title",
+            "de": "Titel",
+            "nl": "Titel",
         },
         locale,
     )
     tl_has_description = translate(
         {
-            "en": "Has Description",
-            "de": "Hat Beschreibung",
-            "nl": "Heeft Beschrijving",
+            "en": "Description",
+            "de": "Beschreibung",
+            "nl": "Beschrijving",
         },
         locale,
     )
     tl_has_location = translate(
         {
-            "en": "Has Location",
-            "de": "Hat Standort",
-            "nl": "Heeft Locatie",
+            "en": "Location",
+            "de": "Standort",
+            "nl": "Locatie",
         },
         locale,
     )
     tl_has_dates = translate(
         {
-            "en": "Has Employment Dates",
-            "de": "Hat Beschäftigungsdaten",
-            "nl": "Heeft Werkperiode",
+            "en": "Employment Dates",
+            "de": "Beschäftigungsdaten",
+            "nl": "Werkperiode",
         },
         locale,
     )
@@ -768,9 +768,9 @@ def extract_device_usage(device_csv, locale):
     tl_date = translate("date", locale)
     tl_user_agent = translate(
         {
-            "en": "Browser/Device",
-            "de": "Browser/Gerät",
-            "nl": "User Agent",
+            "en": "Device/browser",
+            "de": "Gerät/Browser",
+            "nl": "Device/browser",
         },
         locale,
     )
@@ -853,9 +853,9 @@ def extract_saved_jobs(saved_jobs_csv, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Number of saved jobs",
-            "de": "Anzahl der gespeicherten Jobs",
-            "nl": "Aantal opgeslagen vacatures",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )

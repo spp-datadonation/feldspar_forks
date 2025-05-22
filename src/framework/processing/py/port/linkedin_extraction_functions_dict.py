@@ -99,7 +99,7 @@ extraction_dict = {
         "patterns": ["Logins.csv"],
         "title": {
             "en": "Which browsers/devices have you used to access LinkedIn?",
-            "de": "Mit welchen Browsern/Geräten haben Sie auf LinkedIn zugegriffen?",
+            "de": "Mit welchen Geräten/Browsern haben Sie auf LinkedIn zugegriffen?",
             "nl": "Met welke browsers/apparaten heeft u toegang gekregen tot LinkedIn?",
         },
     },

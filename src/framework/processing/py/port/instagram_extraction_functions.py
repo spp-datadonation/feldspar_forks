@@ -87,9 +87,9 @@ def extract_combined_views(combined_data, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of viewed content",
-            "de": "Anzahl der gesehenen Posts und Videos",
-            "nl": "Aantal bekeken inhoud",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -130,9 +130,9 @@ def extract_combined_blocks(combined_data, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of blocked/restricted profiles",
-            "de": "Anzahl blockierter und eingeschränkter Profile",
-            "nl": "Aantal geblokkeerde/beperkte profielen",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -170,9 +170,9 @@ def extract_combined_comments(combined_data, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of comments",
-            "de": "Anzahl der Kommentare",
-            "nl": "Aantal reacties",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -210,9 +210,9 @@ def extract_combined_likes(combined_data, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of liked content",
-            "de": "Anzahl der 'gelikten' Posts, Stories und Videos",
-            "nl": "Aantal gelikete inhoud",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -254,9 +254,9 @@ def extract_combined_story_interactions(combined_data, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of story interactions",
-            "de": "Anzahl der Story-Interaktionen",
-            "nl": "Aantal story-interacties",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -501,9 +501,9 @@ def extract_posts_seen(posts_seen_json, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of viewed posts",
-            "de": "Anzahl der gesehenen Posts",
-            "nl": "Aantal bekeken berichten",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -528,9 +528,9 @@ def extract_videos_seen(videos_seen_json, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of viewed videos",
-            "de": "Anzahl der gesehenen Videos",
-            "nl": "Aantal bekeken video's",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -555,9 +555,9 @@ def extract_blocked_profiles(blocked_profiles_json, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of blocked account",
-            "de": "Anzahl blockierter Konten",
-            "nl": "Aantal geblokkeerde accounts",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -581,9 +581,9 @@ def extract_restricted_profiles(restricted_profiles_json, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of restricted accounts",
-            "de": "Anzahl der eingeschränkten Konten",
-            "nl": "Aantal beperkte accounts",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -607,9 +607,9 @@ def extract_post_comments(post_comments_json, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of post comments",
-            "de": "Anzahl der Post-Kommentare",
-            "nl": "Aantal reacties op berichten",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -640,9 +640,9 @@ def extract_reel_comments(reel_comments_json, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of reel comments",
-            "de": "Anzahl der Reel-Kommentare",
-            "nl": "Aantal reacties op reels",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -666,9 +666,9 @@ def extract_posts_liked(posts_liked_json, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of liked posts",
-            "de": 'Anzahl "geliker" Posts',
-            "nl": "Aantal gelikete berichten",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -692,9 +692,9 @@ def extract_stories_liked(stories_liked_json, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of liked stories",
-            "de": 'Anzahl "gelikter" Stories',
-            "nl": "Aantal gelikete stories ",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -718,9 +718,9 @@ def extract_comments_liked(comments_liked_json, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of liked comments",
-            "de": 'Anzahl "geliker" Kommentare',
-            "nl": "Aantal gelikete reacties",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -744,9 +744,9 @@ def extract_story_interaction_countdowns(story_interaction_countdowns_json, loca
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of reactions",
-            "de": "Anzahl der Reaktionen",
-            "nl": "Aantal reacties",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -772,9 +772,9 @@ def extract_story_interaction_emoji_sliders(
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of reactions",
-            "de": "Anzahl der Reaktionen",
-            "nl": "Aantal reacties",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -798,9 +798,9 @@ def extract_story_interaction_polls(story_interaction_polls_json, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of reactions",
-            "de": "Anzahl der Reaktionen",
-            "nl": "Aantal reacties",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -824,9 +824,9 @@ def extract_story_interaction_questions(story_interaction_questions_json, locale
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of reactions",
-            "de": "Anzahl der Reaktionen",
-            "nl": "Aantal reacties",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -850,9 +850,9 @@ def extract_story_interaction_quizzes(story_interaction_quizzes_json, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of reactions",
-            "de": "Anzahl der Reaktionen",
-            "nl": "Aantal reacties",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -931,7 +931,7 @@ def extract_stories_created(stories_created_json, locale):
     tl_value = translate(
         {
             "en": ["Date", "Linked location"],
-            "de": ["Datum", "Verlikter Standort"],
+            "de": ["Datum", "Standortinformationen geteilt"],
             "nl": ["Datum", "Locatie leuk gevonden"],
         },
         locale,
@@ -965,7 +965,7 @@ def extract_reels_created(reels_created_json, locale):
 
     tl_date = translate("date", locale)
     tl_value = translate(
-        {"en": "Count of reels", "de": "Anzahl der Reels", "nl": "Aantal reels"}, locale
+        {"en": "Count", "de": "Anzahl", "nl": "Aantal"}, locale
     )
 
     dates = [
@@ -988,9 +988,9 @@ def extract_followers_new(followers_new_json, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of followers",
-            "de": "Anzahl der Follower",
-            "nl": "Aantal volgers",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -1019,9 +1019,9 @@ def extract_search_history(search_history_json, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of searches",
-            "de": "Anzahl der Suchen",
-            "nl": "Aantal zoekopdrachten",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -1069,9 +1069,9 @@ def extract_messages(combined_messages_data, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Count of outgoing messages",
-            "de": "Anzahl der gesendeten Nachrichten",
-            "nl": "Aantal verzonden berichten",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -1161,7 +1161,7 @@ def extract_topic_interests(topic_interests_json, locale):
     """extract preferences/your_topics -> list of topics"""
 
     tl_value = translate(
-        {"en": "Your topics", "de": "Ihre Themen", "nl": "Uw onderwerpen"}, locale
+        {"en": "Topics", "de": "Themen", "nl": "Onderwerpen"}, locale
     )
     topics_list = [
         t["string_map_data"]["Name"]["value"]
@@ -1178,7 +1178,7 @@ def extract_login_activity(login_activity_json, locale):
     tl_date = translate("date", locale)
     tl_value1 = translate({"en": "Time", "de": "Uhrzeit", "nl": "Tijd"}, locale)
     tl_value2 = translate(
-        {"en": "User agent", "de": "Gerät", "nl": "Gebruikersagent"}, locale
+        {"en": "Device/browser", "de": "Gerät/Browser", "nl": "Apparaat/browser"}, locale
     )
 
     logins = login_activity_json["account_history_login_history"]
@@ -1200,7 +1200,7 @@ def extract_logout_activity(logout_activity_json, locale):
     tl_date = translate("date", locale)
     tl_value1 = translate({"en": "Time", "de": "Uhrzeit", "nl": "Tijd"}, locale)
     tl_value2 = translate(
-        {"en": "User agent", "de": "Gerät", "nl": "Gebruikersagent"}, locale
+        {"en": "Device/browser", "de": "Gerät/Browser", "nl": "Apparaat/browser"}, locale
     )
 
     logouts = logout_activity_json["account_history_logout_history"]

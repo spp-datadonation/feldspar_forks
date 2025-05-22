@@ -65,9 +65,9 @@ def extract_watch_history(watch_history_json, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Number of videos watched",
-            "de": "Anzahl der gesehenen Videos",
-            "nl": "Aantal bekeken video's",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -97,9 +97,9 @@ def extract_comments(comments_csv, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Number of comments",
-            "de": "Anzahl der Kommentare",
-            "nl": "Aantal reacties",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
@@ -171,9 +171,9 @@ def extract_search_history(search_history_json, locale):
     tl_date = translate("date", locale)
     tl_value = translate(
         {
-            "en": "Number of searches",
-            "de": "Anzahl der Suchen",
-            "nl": "Aantal zoekopdrachten",
+            "en": "Count",
+            "de": "Anzahl",
+            "nl": "Aantal",
         },
         locale,
     )
