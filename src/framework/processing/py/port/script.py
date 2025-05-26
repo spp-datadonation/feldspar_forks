@@ -184,7 +184,7 @@ def identify_platform(filename):
             "Complete_LinkedInDataExport"
         ):
             return "linkedin"
-        elif zip_name.startswith("takeout-"):
+        elif zip_name.lower().startswith("takeout"):
             return "youtube"
 
         # If filename pattern doesn't match, try to check contents as a fallback
