@@ -54,7 +54,7 @@ extraction_dict = {
     },
     "combined_blocks": {
         "extraction_function": ef.extract_combined_blocks,
-        "patterns": ["blocked_accounts", "restricted_accounts"],
+        "patterns": ["blocked_profiles", "restricted_profiles"],
         "title": {
             "en": "How often did you block or restrict other profiles? [per day]",
             "de": "Wie oft haben Sie andere Profile blockiert und eingeschränkt? [pro Tag]",
@@ -108,11 +108,11 @@ extraction_dict = {
     },
     "reels_created": {
         "extraction_function": ef.extract_reels_created,
-        "patterns": ["content/reels"],
+        "patterns": ["media/reels"],
         "title": {
-            "en": "How often did you post reels? [per day]",
-            "de": "Wie oft haben Sie Reels gepostet? [pro Tag]",
-            "nl": "Hoe vaak heeft u reels gepost? [per dag]",
+          "en": "How often have you published reels and have you added location information? [per day]",
+          "de": "Wie oft haben Sie Reels veröffentlicht und haben Sie Standortinformationen hinzugefügt? [pro Tag]",
+          "nl": "Hoe vaak heeft u reels gepubliceerd en heeft u locatie-informatie toegevoegd? [per dag]",
         },
     },
     "followers_new": {

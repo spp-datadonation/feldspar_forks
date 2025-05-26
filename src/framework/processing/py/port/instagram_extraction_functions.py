@@ -550,7 +550,7 @@ def extract_videos_seen(videos_seen_json, locale):
 
 
 def extract_blocked_profiles(blocked_profiles_json, locale):
-    """extract connections/followers_and_following/blocked_accounts -> count per day"""
+    """extract connections/followers_and_following/blocked_profiles -> count per day"""
 
     tl_date = translate("date", locale)
     tl_value = translate(
@@ -871,7 +871,7 @@ def extract_story_interaction_quizzes(story_interaction_quizzes_json, locale):
 
 
 def extract_posts_created(posts_created_json, locale):
-    """extract your_instagram_activity/content/posts_1 -> count per day + info about location"""
+    """extract your_instagram_activity/media/posts_1 -> count per day + info about location"""
 
     tl_value = translate(
         {
@@ -926,7 +926,7 @@ def extract_posts_created(posts_created_json, locale):
 
 
 def extract_stories_created(stories_created_json, locale):
-    """extract your_instagram_activity/content/stories -> count per day + info about location"""
+    """extract your_instagram_activity/media/stories -> count per day + info about location"""
 
     tl_value = translate(
         {
@@ -961,25 +961,45 @@ def extract_stories_created(stories_created_json, locale):
 
 
 def extract_reels_created(reels_created_json, locale):
-    """extract your_instagram_activity/content/reels -> count per day"""
+    """extract your_instagram_activity/media/reels -> count per day + info about location"""
 
-    tl_date = translate("date", locale)
     tl_value = translate(
-        {"en": "Count", "de": "Anzahl", "nl": "Aantal"}, locale
+        {
+            "en": ["Date", "Linked location"],
+            "de": ["Datum", "Standortinformationen geteilt"],
+            "nl": ["Datum", "Locatie leuk gevonden"],
+        },
+        locale,
     )
 
-    dates = [
-        epoch_to_date(media.get("creation_timestamp"))
-        for reel in reels_created_json.get("ig_reels_media", [])
-        for media in reel.get("media", [])
-    ]
-    dates_df = pd.DataFrame(dates, columns=[tl_date])  # convert to df
+    results = []
 
-    aggregated_df = dates_df.groupby([tl_date])[
-        tl_date
-    ].size()  # count number of rows per day
+    for reel in reels_created_json.get("ig_reels_media", []):
+        # Get the first media item in the list (typically there's only one)
+        media_items = reel.get("media", [])
+        if not media_items:
+          continue
 
-    return aggregated_df.reset_index(name=tl_value)
+        media_item = media_items[0]  # Access the first element of the list
+
+        date = epoch_to_date(media_item.get("creation_timestamp", ""))
+        has_latitude_data = any(
+            "latitude" in exif_data
+            for exif_data in media_item.get("media_metadata", {})
+            .get("video_metadata", {})
+            .get("exif_data", [])
+        )
+
+        results.append(
+            {
+                tl_value[0]: date,
+                tl_value[1]: translate("dummy", locale, has_latitude_data),
+            }
+        )
+
+    reels_df = pd.DataFrame(results)
+
+    return reels_df
 
 
 def extract_followers_new(followers_new_json, locale):

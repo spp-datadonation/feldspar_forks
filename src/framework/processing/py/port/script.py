@@ -628,27 +628,27 @@ def extract_instagram_content_from_zip_folder(zip_file_path, file_key, patterns)
                 blocked_data = None
                 restricted_data = None
 
-                # Find and load blocked_accounts.json
+                # Find and load blocked_profiles.json
                 for file_name in file_names:
-                    if file_name.endswith(".json") and "blocked_accounts" in file_name:
+                    if file_name.endswith(".json") and "blocked_profiles" in file_name:
                         try:
                             with zip_ref.open(file_name) as json_file:
                                 json_content = json_file.read()
                                 blocked_data = json.loads(json_content)
                                 break
                         except Exception as e:
-                            print(f"Error reading blocked_accounts file {file_name}: {e}")
+                            print(f"Error reading blocked_profiles file {file_name}: {e}")
 
-                # Find and load restricted_accounts.json
+                # Find and load restricted_profiles.json
                 for file_name in file_names:
-                    if file_name.endswith(".json") and "restricted_accounts" in file_name:
+                    if file_name.endswith(".json") and "restricted_profiles" in file_name:
                         try:
                             with zip_ref.open(file_name) as json_file:
                                 json_content = json_file.read()
                                 restricted_data = json.loads(json_content)
                                 break
                         except Exception as e:
-                            print(f"Error reading restricted_accounts file {file_name}: {e}")
+                            print(f"Error reading restricted_profiles file {file_name}: {e}")
 
                 # Combine the data
                 if blocked_data or restricted_data:
@@ -658,7 +658,7 @@ def extract_instagram_content_from_zip_folder(zip_file_path, file_key, patterns)
                     }
                     return combined_data, "combined_blocks"
                 else:
-                    print("Could not find blocked_accounts or restricted_accounts files")
+                    print("Could not find blocked_profiles or restricted_profiles files")
                     return None, "combined_blocks"
 
             # Special handling for combined_comments (post + reel comments)
@@ -1167,7 +1167,7 @@ def prompt_consent(data, meta_data, locale, platform="Instagram"):
                 # Extract the title from the translation
                 translated_title = description["title"][locale]
                 # Combine values from all columns into a single string
-                combined_value = " |> ".join(
+                combined_value = " | ".join(
                     [f"{col}: {df.iloc[0][col]}" for col in df.columns]
                 )
                 binary_data.append([translated_title, combined_value])

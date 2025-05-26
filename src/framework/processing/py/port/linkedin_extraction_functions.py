@@ -514,19 +514,19 @@ def extract_member_follows(member_follows_csv, locale):
     """Extract LinkedIn member follows data and count per day, differentiating follows/unfollows"""
 
     tl_date = translate("date", locale)
-    tl_follows = translate(
+    tl_total_follows = translate(
         {
-            "en": "Follows",
-            "de": "Folgt",
-            "nl": "Volgt",
+            "en": "Count (total)",
+            "de": "Anzahl (Gesamt)",
+            "nl": "Aantal (total)",
         },
         locale,
     )
-    tl_unfollows = translate(
+    tl_active_follows = translate(
         {
-            "en": "Unfollows",
-            "de": "Folgt nicht mehr",
-            "nl": "Volgt niet meer",
+            "en": "Count (still active)",
+            "de": "Anzahl (noch aktiv)",
+            "nl": "Aantal (still active)",
         },
         locale,
     )
@@ -553,8 +553,8 @@ def extract_member_follows(member_follows_csv, locale):
         return pd.DataFrame(
             {
                 tl_date: ["N/A"],
-                tl_follows: ["N/A"],
-                tl_unfollows: ["Required columns not found"],
+                tl_total_follows: ["N/A"],
+                tl_active_follows: ["Required columns not found"],
             }
         )
 
@@ -572,12 +572,13 @@ def extract_member_follows(member_follows_csv, locale):
         processed_df[status_column].str.lower().str.contains("active")
     )
 
-    # Group by date and count follows/unfollows
+    # Group by date and count total follows and active follows
     result = []
     for date, group in processed_df.groupby("formatted_date"):
-        follows = sum(group["is_active"])
+        total_follows = len(group)
+        active_follows = sum(group["is_active"])
 
-        result.append({tl_date: date, tl_follows: follows})
+        result.append({tl_date: date, tl_total_follows: total_follows, tl_active_follows: active_follows})
 
     return pd.DataFrame(result)
 

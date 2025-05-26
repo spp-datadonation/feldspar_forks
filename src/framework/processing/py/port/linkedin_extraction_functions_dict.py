@@ -71,8 +71,8 @@ extraction_dict = {
         "extraction_function": ef.extract_member_follows,
         "patterns": ["Member_Follows.csv"],
         "title": {
-            "en": "How many LinkedIn members have you followed or unfollowed? [per day]",
-            "de": "Wie vielen LinkedIn-Mitgliedern sind Sie gefolgt bzw. nicht mehr gefolgt? [pro Tag]",
+            "en": "How many LinkedIn members have you followed or are still actively following? [per day]",
+            "de": "Wie vielen LinkedIn-Mitgliedern sind Sie gefolgt bzw. folgen Sie noch aktiv? [pro Tag]",
             "nl": "Hoeveel LinkedIn-leden bent u gaan volgen of niet meer gaan volgen? [per dag]",
         },
     },
