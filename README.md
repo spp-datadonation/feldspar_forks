@@ -245,7 +245,7 @@ To use the release in the Next platform, add a "Donate task" and select the gene
 
 ## Important Disclaimer
 
-Please review the [disclaimer](./disclaimer.md) in this repository for important information about technical limitations, logging behavior, and data handling considerations.
+Please review the [disclaimer](./DISCLAIMER.md) in this repository for important information about technical limitations, logging behavior, and data handling considerations.
 
 ## Funding
 
