@@ -52,6 +52,45 @@ When an out-of-memory error occurs in the browser:
 - The task will **not** receive a green checkmark
 - No error data is captured or sent to the server
 
+## Logging and Error Monitoring
+
+As part of ongoing improvements to the reliability and stability of Feldspar, error and diagnostic logging may be enabled.
+
+### What is logged
+
+Feldspar may collect and forward technical log messages, including:
+- JavaScript errors (browser level)
+- Framework-level errors
+- Python runtime errors (if enabled)
+
+These logs are used solely for debugging and improving the platform.
+
+### Important: Potential inclusion of personal data
+
+Although logs are intended to contain only technical information, log messages may unintentionally include personal data.
+
+This can occur in two ways:
+- When developers explicitly log messages that include user-provided input or data
+- When runtime errors or exceptions include data in their error messages or stack traces
+
+### Data handling
+
+- Logs are processed within the Next platform infrastructure
+- Logs are not used for research purposes
+- Logs are only accessed for debugging and system improvement
+
+### Responsibilities
+
+Script developers and researchers setting up the data donation study are responsible for:
+- Avoiding logging of personal data in their scripts
+- Handling exceptions in a way that prevents unintended inclusion of personal data in log messages
+
+### Roadmap
+
+The following features are on the Feldspar development roadmap:
+- More granular logging controls (per layer: browser, framework, Python)
+- Options to disable logging entirely for privacy-sensitive studies
+
 ## Recommendations
 
 To maximize successful data donations:
@@ -61,10 +100,6 @@ To maximize successful data donations:
 3. **Test with representative data sizes** before deploying to participants
 4. **Monitor server logs** for donation errors
 5. **Consider participant device diversity** when designing data extraction scripts
-
-## Upcoming Improvements
-
-**Milestone 7** will introduce client-side error monitoring, sending JavaScript and Python errors from Feldspar to the Next server. This will improve visibility into client-side failures, though out-of-memory crashes will still result in data loss.
 
 ## Questions
 
